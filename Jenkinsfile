@@ -26,13 +26,14 @@ pipeline {
     stage('tflint') {
       agent {
         docker { 
-          image 'ghcr.io/terraform-linters/tflint' 
+          image 'dwpdigital/tflint' 
           reuseNode true
         }
       }
       steps {
         sh '''
-          tflint . --no-color
+ 	  tflint --init
+          tflint  --no-color
         '''
       }
     }
