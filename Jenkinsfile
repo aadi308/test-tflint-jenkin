@@ -19,7 +19,7 @@ pipeline {
         withAWS(credentials: 'aadi_aws', region: 'us-east-2') {
           sh '''
            terraform init
-         '''z
+         '''
          }
       }
     }
