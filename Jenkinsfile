@@ -33,15 +33,15 @@ pipeline {
                  }
  
            }
-               script {
-                   sh '''
-                   cd fpg-infra
-                   tflint --init
-                   find modules -type d | xargs -I {} tflint || true {}
-                   '''
-                     }            
+      script {
+          sh '''
+          cd fpg-infra
+          tflint --init
+          find modules -type d | xargs -I {} tflint || true {}
+          '''
       }
     }
+
     stage('terraform-apply-and-destroy') {
       steps {
         withAWS(credentials: 'aadi_aws', region: 'us-east-2') {  
