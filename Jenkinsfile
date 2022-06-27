@@ -26,7 +26,7 @@ pipeline {
     stage('tflint') {
       agent {
         docker { 
-          image 'wata727/tflint' 
+          image 'dwpdigital/tflint' 
           reuseNode true
         }
       }
