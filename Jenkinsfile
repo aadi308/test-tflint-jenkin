@@ -23,18 +23,23 @@ pipeline {
          }
       }
     }
-    stage('tflint') {
-      agent {
-        docker { 
-          image 'dwpdigital/tflint' 
-          reuseNode true
-        }
-      }
-      steps {
-        sh '''
- 	  
-          tflint  --no-color
-        '''
+
+    stage('TF lint') {
+           agent {
+              
+               docker {
+                   image "ghcr.io/terraform-linters/tflint"
+                   args '-i --entrypoint='
+                 }
+ 
+           }
+               script {
+                   sh '''
+                   cd fpg-infra
+                   tflint --init
+                   find modules -type d | xargs -I {} tflint || true {}
+                   '''
+                     }            
       }
     }
     stage('terraform-apply-and-destroy') {
