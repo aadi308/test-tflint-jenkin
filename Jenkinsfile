@@ -26,11 +26,10 @@ pipeline {
 
     stage('TF lint') {
            agent {
-              
-               docker {
-                   image "ghcr.io/terraform-linters/tflint"
-                   args '-i --entrypoint='
-                 }
+             docker {
+               image "ghcr.io/terraform-linters/tflint"
+               args '-i --entrypoint='
+              }
  
            }
       script {
