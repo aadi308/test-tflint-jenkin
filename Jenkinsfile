@@ -32,7 +32,6 @@ pipeline {
       }
       steps {
         sh '''
-	  cd fpg-infra
  	  tflint --init
           tflint  --no-color
         '''
