@@ -26,7 +26,7 @@ pipeline {
     stage('tflint') {
       agent {
         docker { 
-          image 'dwpdigital/tflint' 
+          image 'ghcr.io/terraform-linters/tflint' 
           reuseNode true
         }
       }
